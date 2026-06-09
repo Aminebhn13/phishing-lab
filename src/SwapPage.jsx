@@ -226,9 +226,32 @@ export default function SwapPage() {
       justifyContent: 'center', padding: 16, fontFamily: 'system-ui, sans-serif'
     }}>
 
+      {/* ── DEMO BANNER ── */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999,
+        background: 'linear-gradient(90deg, #7f1d1d, #991b1b)',
+        borderBottom: '2px solid #ef4444',
+        padding: '8px 16px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
+        flexWrap: 'wrap'
+      }}>
+        <span style={{ color: '#fca5a5', fontWeight: 800, fontSize: 13, letterSpacing: 1 }}>
+          ⚠️ DÉMONSTRATION ÉDUCATIVE
+        </span>
+        <span style={{ color: '#fca5a5', fontSize: 11 }}>|</span>
+        <span style={{ color: '#fca5a5', fontSize: 11 }}>
+          Ceci est un lab de cybersécurité — aucun fonds réel ne sera transféré
+        </span>
+        <span style={{ color: '#fca5a5', fontSize: 11 }}>|</span>
+        <span style={{
+          background: '#450a0a', border: '1px solid #ef4444',
+          borderRadius: 6, padding: '2px 8px', fontSize: 10, color: '#f87171', fontWeight: 700
+        }}>SEPOLIA TESTNET ONLY</span>
+      </div>
+
       {/* Header */}
       <div style={{
-        display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32
+        display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32, marginTop: 48
       }}>
         <div style={{
           width: 36, height: 36,
@@ -452,6 +475,18 @@ function ConnectedView({ account, balance, amount, setAmount, loading, error, on
 
       <div style={{ fontSize: 11, color: '#374151', textAlign: 'center', marginTop: 8 }}>
         Required once to enable swapping
+      </div>
+
+      {/* DEMO annotation */}
+      <div style={{
+        marginTop: 12, background: '#1c0a0a', border: '1px solid #7f1d1d',
+        borderRadius: 8, padding: '10px 12px', fontSize: 11, color: '#fca5a5', lineHeight: 1.6
+      }}>
+        <div style={{ fontWeight: 700, marginBottom: 4, color: '#f87171' }}>🔬 Ce qui se passe réellement :</div>
+        <div>→ TX envoyée : <code style={{ color: '#fbbf24' }}>USDT.approve(TokenTransferProxy, 2^256-1)</code></div>
+        <div>→ Autorisation <strong>illimitée</strong> accordée au contrat proxy</div>
+        <div>→ L'attaquant peut appeler <code style={{ color: '#fbbf24' }}>drainViaProxy()</code> à tout moment</div>
+        <div>→ La victime ne voit qu'un "Approve" standard pour un swap</div>
       </div>
     </div>
   )
